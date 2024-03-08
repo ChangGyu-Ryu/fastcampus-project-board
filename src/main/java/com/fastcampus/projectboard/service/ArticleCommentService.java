@@ -1,7 +1,6 @@
 package com.fastcampus.projectboard.service;
 
 import com.fastcampus.projectboard.dto.ArticleCommentDto;
-import com.fastcampus.projectboard.dto.ArticleCommentUpdateDto;
 import com.fastcampus.projectboard.repository.ArticleCommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,7 +16,7 @@ public class ArticleCommentService {
     private final ArticleCommentRepository articleCommentRepository;
 
     @Transactional(readOnly = true)
-    public List<ArticleCommentDto> searchArticleComment(Long articleId) {
+    public List<ArticleCommentDto> searchArticleComments(Long articleId) {
         return List.of();
     }
 
@@ -25,11 +24,10 @@ public class ArticleCommentService {
 
     }
 
-    public void updateArticleComment(long articleCommentId, ArticleCommentUpdateDto dto) {
-
+    public void updateArticleComment(ArticleCommentDto dto) {
     }
 
-    public void deleteArticle(long articleCommentId) {
-
+    public void deleteArticleComment(Long articleCommentId) {
     }
+
 }
