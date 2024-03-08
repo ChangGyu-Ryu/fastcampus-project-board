@@ -3,6 +3,7 @@ package com.fastcampus.projectboard.config;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -15,6 +16,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()  // 정적 리소스 - No static resource login. 에러 해결
                         .anyRequest().permitAll())
+                        .formLogin(Customizer.withDefaults())
+                        .logout(logout -> logout.logoutSuccessUrl("/"))
                 .build();
     }
 }
