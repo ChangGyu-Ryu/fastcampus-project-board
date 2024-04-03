@@ -4,15 +4,12 @@ import com.fastcampus.projectboard.domain.UserAccount;
 
 import java.time.LocalDateTime;
 
-/**
- * DTO for {@link com.fastcampus.projectboard.domain.UserAccount}
- */
 public record UserAccountDto(
         String userId,
         String userPassword,
         String email,
-        String memo,
         String nickname,
+        String memo,
         LocalDateTime createdAt,
         String createdBy,
         LocalDateTime modifiedAt,
@@ -27,8 +24,8 @@ public record UserAccountDto(
         return new UserAccountDto(userId, userPassword, email, nickname, memo, createdAt, createdBy, modifiedAt, modifiedBy);
     }
 
-        public static UserAccountDto from(UserAccount entity) {
-            return new UserAccountDto(
+    public static UserAccountDto from(UserAccount entity) {
+        return new UserAccountDto(
                 entity.getUserId(),
                 entity.getUserPassword(),
                 entity.getEmail(),
@@ -50,4 +47,5 @@ public record UserAccountDto(
                 memo
         );
     }
+
 }
