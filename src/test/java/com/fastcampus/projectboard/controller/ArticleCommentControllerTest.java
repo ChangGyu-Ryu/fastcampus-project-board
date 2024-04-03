@@ -1,6 +1,5 @@
 package com.fastcampus.projectboard.controller;
 
-import com.fastcampus.projectboard.config.SecurityConfig;
 import com.fastcampus.projectboard.config.TestSecurityConfig;
 import com.fastcampus.projectboard.dto.ArticleCommentDto;
 import com.fastcampus.projectboard.dto.request.ArticleCommentRequest;
@@ -33,6 +32,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class ArticleCommentControllerTest {
 
     private final MockMvc mvc;
+
     private final FormDataEncoder formDataEncoder;
 
     @MockBean private ArticleCommentService articleCommentService;
