@@ -1,10 +1,8 @@
 # 첫 번째 스테이지: 빌드 스테이지
-FROM openjdk:17-alpine
+FROM gradle:jdk21-graal-jammy as builder
 
 # 작업 디렉토리 설정
 WORKDIR /app
-
-ARG JAR_PATH=./build/libs
 
 # 소스 코드와 Gradle 래퍼 복사
 COPY gradlew .
@@ -31,7 +29,7 @@ FROM ghcr.io/graalvm/jdk-community:21
 WORKDIR /app
 
 # 첫 번째 스테이지에서 빌드된 JAR 파일 복사
-COPY --from=builder /app/build/libs/*.jar project-board-v1.1.jar
+COPY --from=builder /app/build/libs/*.jar app.jar
 
 # 실행할 JAR 파일 지정
-ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=prod", "project-board-v1.1.jar"]
+ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=prod", "app.jar"]
