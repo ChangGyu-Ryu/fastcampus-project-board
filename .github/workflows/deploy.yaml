@@ -9,8 +9,7 @@ on:
       - .github/workflows/deploy.yaml
     branches:
       - main
-env:
- FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
 jobs:
   deploy:
     name: Deploy app
@@ -21,6 +20,8 @@ jobs:
         env:
           APPLICATION_SECRET: ${{ secrets.APPLICATION_SECRET_YAML }}
         run: echo "$APPLICATION_SECRET" > src/main/resources/application-secret.yaml
-      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - uses: superfly/flyctl-actions/setup-flyctl@main
       - run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}        
 
