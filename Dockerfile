@@ -1,5 +1,5 @@
 # 첫 번째 스테이지: 빌드 스테이지
-FROM openjdk:17-alpine
+FROM bellsoft/liberica-openjdk-alpine:17
 
 # 작업 디렉토리 설정
 WORKDIR /app
