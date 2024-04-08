@@ -31,5 +31,5 @@ WORKDIR /app
 # 첫 번째 스테이지에서 빌드된 JAR 파일 복사
 COPY --from=builder /app/build/libs/*.jar app.jar
 
-# 실행할 JAR 파일 지정
+# 실행할 JAR 파일 지정함
 ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=prod", "app.jar"]
