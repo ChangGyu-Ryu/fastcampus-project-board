@@ -1,8 +1,10 @@
 # 첫 번째 스테이지: 빌드 스테이지
-FROM ubuntu:16.04
+FROM openjdk:17-alpine
 
 # 작업 디렉토리 설정
 WORKDIR /app
+
+ARG JAR_PATH=./build/libs
 
 # 소스 코드와 Gradle 래퍼 복사
 COPY gradlew .
@@ -32,4 +34,4 @@ WORKDIR /app
 COPY --from=builder /app/build/libs/*.jar app.jar
 
 # 실행할 JAR 파일 지정
-ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=prod", "app.jar"]
+ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=prod", "build/libs/project-board-v1.1.jar"]
