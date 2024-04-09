@@ -27,7 +27,7 @@ public class ArticleCommentController {
         return "redirect:/articles/" + articleCommentRequest.articleId();
     }
 
-    @PostMapping ("/{commentId}/delete")
+    @PostMapping("/{commentId}/delete")
     public String deleteArticleComment(
             @PathVariable Long commentId,
             @AuthenticationPrincipal BoardPrincipal boardPrincipal,
